@@ -1,5 +1,4 @@
 <div class="container">
-    <!-- <button class="trigger" (click)="showModal = true;">Click here to trigger the modal!</button> -->
     <h2 *ngIf="selectedBeverage">{{user.lastName}}'s most recent selected drink is {{selectedBeverage}}</h2>
     <div class="modal" [ngClass]="showModal ? 'show-modal' : '' ">
         <div class="modal-content">
@@ -9,7 +8,7 @@
             <ng-container *ngIf="!newUser">
                 <app-usual></app-usual>
             </ng-container>
-            
+
             <div *ngIf="!selectedBeverage">
                 <ng-container *ngIf="(!nameSubmitted && newUser) else beverageSelection">
                     <div>
@@ -30,11 +29,10 @@
                             <option *ngFor="let drink of beverageList" [value]="drink">{{drink}}</option>
                         </select>
                     </div>
-                    <app-beverage *ngIf="addBeverage"
-                        (updateBeverageList)="getUpdatedBeverageList($event)" [selectedBeverage]="selectedBeverage"></app-beverage>
+                    <app-beverage
+                        (updateBeverageList)="getUpdatedBeverageList($event)" [userBeverage]="selectedBeverage"></app-beverage>
                 </ng-template>
             </div>
         </div>
     </div>
 </div>
-<!-- <app-usual></app-usual> -->

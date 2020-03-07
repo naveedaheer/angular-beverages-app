@@ -25,12 +25,12 @@ export class SaloonService {
 
   saveUserBeverage(data) {
     // localStorage.removeItem("selectedBeverage");
-    localStorage.setItem("selectedBeverage", JSON.stringify(data));
+    localStorage.setItem("selectedBeverage", data);
   }
 
   
   getUserBeverage() {
-    return JSON.parse(localStorage.getItem("selectedBeverage")) || '';
+    return localStorage.getItem("selectedBeverage");
   }
 
   clearAllData() {

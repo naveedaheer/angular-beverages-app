@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { SaloonService } from './../../services/saloon.service';
 
 @Component({
   selector: 'app-usual',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./usual.component.sass']
 })
 export class UsualComponent implements OnInit {
-
-  constructor() { }
+  defaultSelection;
+  constructor(private service: SaloonService) { }
 
   ngOnInit(): void {
+    this.defaultSelection = this.service.getUserBeverage();
   }
 
 }
