@@ -1,3 +1,8 @@
+.container
+    margin: auto 6rem
+    background-color: #EAF2F8
+    height: 100vh
+
 .modal  
     position: fixed 
     left: 0 
@@ -17,7 +22,7 @@
     transform: translate(-50%, -50%) 
     background-color: white 
     padding: 1rem 1.5rem 
-    width: 24rem 
+    width: 34rem 
     border-radius: 0.5rem 
  
 .close-button  
@@ -36,5 +41,37 @@
     opacity: 1 
     visibility: visible 
     transform: scale(1.0) 
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s 
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s
+
+
+input[type=text], select 
+  width: 100%
+  padding: 12px 20px
+  margin: 8px 0
+  display: inline-block
+  border: 1px solid #ccc
+  border-radius: 4px
+  box-sizing: border-box
+
+
+button[type=submit] 
+  width: 100%
+  background-color: #4CAF50
+  color: white
+  padding: 14px 20px
+  margin: 8px 0
+  border: none
+  border-radius: 4px
+  cursor: pointer
+
+
+button[type=submit]:hover 
+  background-color: #45a049
+
+
+div .modal .modal-content 
+  border-radius: 5px
+  background-color: #f2f2f2
+  padding: 20px
+
  

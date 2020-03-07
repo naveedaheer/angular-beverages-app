@@ -1,8 +1,24 @@
-<button class="trigger" (click)="showModal = true;" >Click here to trigger the modal!</button>
-<div class="modal" [ngClass]="showModal ? 'show-modal' : '' " >
-    <div class="modal-content">
-        <span class="close-button" (click)="showModal = false;">×</span>
-        <h1>Howdy, stranger. Haven't seen your face around here before. What's your name?
-        </h1>
+<div class="container">
+    <button class="trigger" (click)="showModal = true;">Click here to trigger the modal!</button>
+    <div class="modal" [ngClass]="showModal ? 'show-modal' : '' ">
+        <div class="modal-content">
+            <span class="close-button" (click)="showModal = false;">×</span>
+            <h2>Howdy, stranger. Haven't seen your face around here before. What's your name?</h2>
+            <div>
+                <form>
+                    <input type="text" id="fname" name="firstname" placeholder="First name..">
+                    <input type="text" id="lname" name="lastname" placeholder="Last name..">
+                    <label for="country">selects a beverage</label>
+                    <select id="country" name="country">
+                        <option value="beverage">beverage1</option>
+                        <option value="beverage">beverage2</option>
+                        <option value="beverage">beverage3</option>
+                    </select>
+                    <button type="submit" (click)="save()">Submit</button>
+                </form>
+            </div>
+        </div>
     </div>
 </div>
+<!-- <app-beverage></app-beverage> -->
+<!-- <app-usual></app-usual> -->
