@@ -1,5 +1,6 @@
 <div class="header">
     <h1>Welcome to the saloon</h1>
+    <app-forget (clearData)="allDataRemoved($event)"></app-forget>
 </div>
 
-<app-dialogue></app-dialogue>
+<app-dialogue [openModal]="dataRemoved"></app-dialogue>

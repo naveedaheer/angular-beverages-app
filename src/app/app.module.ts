@@ -6,6 +6,7 @@ import { DialogueComponent } from './components/dialogue/dialogue.component';
 import { ForgetComponent } from './components/forget/forget.component';
 import { BeverageComponent } from './components/beverage/beverage.component';
 import { UsualComponent } from './components/usual/usual.component';
+import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { UsualComponent } from './components/usual/usual.component';
     UsualComponent
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
