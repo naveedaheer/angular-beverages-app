@@ -1,0 +1,8 @@
+<button class="trigger" (click)="showModal = true;" >Click here to trigger the modal!</button>
+<div class="modal" [ngClass]="showModal ? 'show-modal' : '' " >
+    <div class="modal-content">
+        <span class="close-button" (click)="showModal = false;">×</span>
+        <h1>Howdy, stranger. Haven't seen your face around here before. What's your name?
+        </h1>
+    </div>
+</div>
