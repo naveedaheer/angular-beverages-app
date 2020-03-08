@@ -1,6 +1,6 @@
 {
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
-  "version": 1, 
+  "version": 1,
   "newProjectRoot": "projects",
   "projects": {
     "angular-saloon": {
@@ -123,6 +123,10 @@
           }
         }
       }
-    }},
-  "defaultProject": "angular-saloon"
+    }
+  },
+  "defaultProject": "angular-saloon",
+  "cli": {
+    "analytics": "235f4355-a6cd-46fb-b5f0-f9286257ecb2"
+  }
 }

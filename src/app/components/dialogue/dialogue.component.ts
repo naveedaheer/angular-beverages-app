@@ -11,9 +11,9 @@ export class DialogueComponent implements OnInit, OnChanges {
   title = "Howdy, stranger. Haven't seen your face around here before. What's your name?";
   user = {
     firstName: '',
-    lastName: '',
-    selectedBeverage: ''
+    lastName: ''
   }
+  selectedBeverage: string;
   nameSubmitted = false;
   addBeverage = false;
   beverageList;
@@ -28,6 +28,7 @@ export class DialogueComponent implements OnInit, OnChanges {
     const user = this.service.getUser();
     console.log("user", user);
     if (user) {
+      this.user = user;
       this.title = `Hello again, Mr. ${user.lastName}! The usual?`
       this.newUser = false;
     }
@@ -37,25 +38,25 @@ export class DialogueComponent implements OnInit, OnChanges {
   ngOnChanges(changes: SimpleChanges): void {
     if (changes && changes.openModal && changes.openModal.currentValue) {
       this.nameSubmitted = false;
-      this.user.selectedBeverage = '';
+      this.selectedBeverage = '';
       this.showModal = true;
       this.title = `Got it. Who are you again?`
     }
   }
 
   saveUser(): void {
+    this.service.saveUser(this.user);
     this.nameSubmitted = true;
     this.title = `Alright Mr. ${this.user.lastName}, what can I do for you?`;
   }
 
   getBeverage(value: string) {
-    this.user.selectedBeverage = value;
-    this.title = `One ${this.user.selectedBeverage}, coming right up!`;
+    this.selectedBeverage = value;
+    this.title = `One ${this.selectedBeverage}, coming right up!`;
   }
 
   getUpdatedBeverageList(list) {
     this.beverageList = list;
-    console.log("e")
     this.addBeverage = false;
   }
 
