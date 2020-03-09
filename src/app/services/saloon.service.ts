@@ -24,7 +24,6 @@ export class SaloonService {
   }
 
   saveUserBeverage(data) {
-    // localStorage.removeItem("selectedBeverage");
     localStorage.setItem("selectedBeverage", data);
   }
 
@@ -34,8 +33,7 @@ export class SaloonService {
   }
 
   clearAllData() {
-    localStorage.removeItem("user");
-    localStorage.removeItem("selectedBeverage");
+    localStorage.clear();
   }
 
 }

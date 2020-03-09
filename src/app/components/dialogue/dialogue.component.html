@@ -6,7 +6,7 @@
             <h2>{{title}}</h2>
             
             <ng-container *ngIf="!newUser">
-                <app-usual></app-usual>
+                <app-usual (defaultSelection)="drinkSelection($event)" ></app-usual>
             </ng-container>
 
             <div *ngIf="!selectedBeverage">
@@ -21,15 +21,15 @@
                     </div>
                 </ng-container>
                 <ng-template #beverageSelection>
-                    <div *ngIf="!addBeverage || !newUser">
-                        <label for="beverage">selects a beverage</label> or <span (click)="addBeverage = true;"
+                    <div *ngIf="(!addBeverage) && showMenu">
+                        <label for="beverage">selects a beverage</label> or <span (click)="addBeverage = true; showMenu = false;"
                             class="pointer">Add new beverage</span>
-                        <select id="beverage" name="beverage"
+                        <select id="beverage" name="beverage" [(ngModel)]="selectedBeverage"
                             (change)="getBeverage($event.target.value)">
                             <option *ngFor="let drink of beverageList" [value]="drink">{{drink}}</option>
                         </select>
                     </div>
-                    <app-beverage *ngIf="addBeverage"
+                    <app-beverage *ngIf="addBeverage && !showMenu"
                         (updateBeverageList)="getUpdatedBeverageList($event)"></app-beverage>
                 </ng-template>
             </div>

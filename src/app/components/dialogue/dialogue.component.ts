@@ -19,6 +19,7 @@ export class DialogueComponent implements OnInit, OnChanges {
   beverageList;
   @Input() openModal;
   newUser = true;
+  showMenu = false;
 
   constructor(private service: SaloonService) { }
 
@@ -41,6 +42,12 @@ export class DialogueComponent implements OnInit, OnChanges {
       this.selectedBeverage = '';
       this.showModal = true;
       this.title = `Got it. Who are you again?`
+      this.newUser = true;
+      this.user = {
+        firstName: '',
+        lastName: ''
+      }
+      this.beverageList = [];
     }
   }
 
@@ -48,18 +55,30 @@ export class DialogueComponent implements OnInit, OnChanges {
     this.service.saveUser(this.user);
     this.nameSubmitted = true;
     this.title = `Alright Mr. ${this.user.lastName}, what can I do for you?`;
+    this.showMenu = true;
+    // this.addBeverage = false;
   }
 
   getBeverage(value: string) {
     this.selectedBeverage = value;
     this.title = `One ${this.selectedBeverage}, coming right up!`;
     this.service.saveUserBeverage(this.selectedBeverage);
-  
+
   }
 
   getUpdatedBeverageList(list) {
     this.beverageList = list;
     this.addBeverage = false;
+    this.showMenu = true;
+  }
+
+  drinkSelection(usual: boolean) {
+    if (usual) {
+      this.title = `One ${this.service.getUserBeverage()}, coming right up!`;
+    } else {
+      this.showMenu = true;
+      this.addBeverage = false;
+    }
   }
 
 }
