@@ -7,16 +7,22 @@ import { SaloonService } from './../../services/saloon.service';
   styleUrls: ['./beverage.component.sass']
 })
 export class BeverageComponent implements OnInit {
-  beverage: string;
-  drinkList;
-  @Output() updateBeverageList = new EventEmitter();
+  beverage: string; // beverage name user eners in input field to store
+  drinkList; // display all the beverages stored
+  @Output() updateBeverageList = new EventEmitter(); // this sends the updated list of beverages
 
   constructor(private service: SaloonService) { }
 
+  /**
+   * get all the drinks from localStoarge using service
+   */
   ngOnInit(): void {
     this.drinkList = this.service.getBeverages();
   }
 
+  /**
+   *  Add a new drink in the list of all beverages in localStorge   
+   */
   add(): void {
     this.drinkList.push(this.beverage);
     this.service.saveBeverages(this.drinkList);

@@ -14,6 +14,10 @@ export class UsualComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * @param usual true or false, if user click on button the usual then it is true if clicks on 'another beverage' then fasle
+   * It sends an event to parent component 'dialogue'
+   */
   theUsual(usual: boolean) {
     this.defaultSelection.emit(usual);
   }

@@ -1,8 +1,11 @@
 <div class="main">
+    <!-- Input field to add new drink -->
     <div>
         <input [(ngModel)]="beverage" type="text" id="beverage" name="beverage" placeholder="Beverage name..">
         <button class="btn-style" (click)="add()">Add</button>
     </div>
+
+    <!-- Display all the drinks -->
     <div *ngIf="drinkList?.length">
         <ol>
             <li *ngFor="let drink of drinkList">{{drink}}</li>

@@ -1,8 +1,12 @@
 <div class="container">
     <h2 *ngIf="selectedBeverage">{{user.lastName}}'s most recent selected drink is {{selectedBeverage}}</h2>
+
+    <!-- Modal Box Started -->
     <div class="modal" [ngClass]="showModal ? 'show-modal' : '' ">
         <div class="modal-content">
             <span class="close-button" (click)="showModal = false;">×</span>
+
+            <!-- Dynamic Title to display related messages -->
             <h2>{{title}}</h2>
 
             <!-- child component -->
@@ -11,6 +15,7 @@
             </ng-container>
 
             <div *ngIf="!selectedBeverage">
+                <!-- Display this for new users only to get first and last name -->
                 <ng-container *ngIf="(!nameSubmitted && newUser) else beverageSelection">
                     <div>
                         <input [(ngModel)]="user.firstName" type="text" id="fname" name="firstname"
@@ -21,6 +26,8 @@
                             [disabled]="!user.firstName || !user.lastName">Continue</button>
                     </div>
                 </ng-container>
+
+                <!-- Display the beverage menu in select -->
                 <ng-template #beverageSelection>
                     <div *ngIf="(!addBeverage) && showMenu">
                         <label for="beverage">selects a beverage</label> or <span
@@ -38,4 +45,6 @@
             </div>
         </div>
     </div>
+    <!-- Modal Box Ended -->
+
 </div>

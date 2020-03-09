@@ -14,6 +14,9 @@ export class ForgetComponent implements OnInit {
   ngOnInit(): void {
   }
 
+  /**
+   * It removes all the data from localStoarge using service method and sends an event to parent component 'dialogue'
+   */
   clearAllData(): void {
     this.service.clearAllData();
     this.clearData.emit(true);
