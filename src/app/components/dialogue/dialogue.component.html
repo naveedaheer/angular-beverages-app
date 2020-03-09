@@ -24,13 +24,13 @@
                     <div *ngIf="!addBeverage || !newUser">
                         <label for="beverage">selects a beverage</label> or <span (click)="addBeverage = true;"
                             class="pointer">Add new beverage</span>
-                        <select id="beverage" name="beverage" [(ngModel)]="selectedBeverage"
+                        <select id="beverage" name="beverage"
                             (change)="getBeverage($event.target.value)">
                             <option *ngFor="let drink of beverageList" [value]="drink">{{drink}}</option>
                         </select>
                     </div>
-                    <app-beverage
-                        (updateBeverageList)="getUpdatedBeverageList($event)" [userBeverage]="selectedBeverage"></app-beverage>
+                    <app-beverage *ngIf="addBeverage"
+                        (updateBeverageList)="getUpdatedBeverageList($event)"></app-beverage>
                 </ng-template>
             </div>
         </div>

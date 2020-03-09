@@ -8,6 +8,7 @@ import { SaloonService } from './../../services/saloon.service';
 })
 export class UsualComponent implements OnInit {
   defaultSelection;
+  showDefaultSelection = false;
   constructor(private service: SaloonService) { }
 
   ngOnInit(): void {

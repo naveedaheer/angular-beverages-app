@@ -1,4 +1,4 @@
 <div>
-    <button class="btn-style">The usual</button>
-    <h2>The default selection is {{defaultSelection}} </h2>
+    <button class="btn-style" (click)="showDefaultSelection = true">The usual</button>
+    <h3 *ngIf="showDefaultSelection">The default selection is {{defaultSelection}} </h3>
 </div>

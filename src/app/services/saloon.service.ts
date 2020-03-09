@@ -34,7 +34,8 @@ export class SaloonService {
   }
 
   clearAllData() {
-    localStorage.clear();
+    localStorage.removeItem("user");
+    localStorage.removeItem("selectedBeverage");
   }
 
 }

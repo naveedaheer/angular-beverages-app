@@ -6,8 +6,7 @@ import { SaloonService } from './../../services/saloon.service';
   templateUrl: './beverage.component.html',
   styleUrls: ['./beverage.component.sass']
 })
-export class BeverageComponent implements OnInit, OnChanges {
-  @Input() userBeverage;
+export class BeverageComponent implements OnInit {
   beverage: string;
   drinkList;
   @Output() updateBeverageList = new EventEmitter();
@@ -18,21 +17,9 @@ export class BeverageComponent implements OnInit, OnChanges {
     this.drinkList = this.service.getBeverages();
   }
 
-  ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes", changes);
-    if (this.userBeverage) {
-      this.service.saveUserBeverage(this.userBeverage);
-    }
-    // if (changes && changes.userBeverage && changes.userBeverage.currentValue) {
-    // }
-  }
-
   add(): void {
-    console.log("this.beverage", this.beverage);
 
     this.drinkList.push(this.beverage);
-    console.log("this.drinkList", this.drinkList);
-    // if()
     this.service.saveBeverages(this.drinkList);
     this.updateBeverageList.emit(this.drinkList);
 

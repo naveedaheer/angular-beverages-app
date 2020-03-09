@@ -53,6 +53,8 @@ export class DialogueComponent implements OnInit, OnChanges {
   getBeverage(value: string) {
     this.selectedBeverage = value;
     this.title = `One ${this.selectedBeverage}, coming right up!`;
+    this.service.saveUserBeverage(this.selectedBeverage);
+  
   }
 
   getUpdatedBeverageList(list) {
