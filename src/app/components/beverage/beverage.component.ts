@@ -1,4 +1,4 @@
-import { Component, OnInit, Input, OnChanges, SimpleChanges, Output, EventEmitter } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import { SaloonService } from './../../services/saloon.service';
 
 @Component({
@@ -18,7 +18,6 @@ export class BeverageComponent implements OnInit {
   }
 
   add(): void {
-
     this.drinkList.push(this.beverage);
     this.service.saveBeverages(this.drinkList);
     this.updateBeverageList.emit(this.drinkList);

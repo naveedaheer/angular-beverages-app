@@ -27,7 +27,6 @@ export class DialogueComponent implements OnInit, OnChanges {
     this.beverageList = this.service.getBeverages();
     this.showModal = true;
     const user = this.service.getUser();
-    console.log("user", user);
     if (user) {
       this.user = user;
       this.title = `Hello again, Mr. ${user.lastName}! The usual?`
@@ -56,7 +55,6 @@ export class DialogueComponent implements OnInit, OnChanges {
     this.nameSubmitted = true;
     this.title = `Alright Mr. ${this.user.lastName}, what can I do for you?`;
     this.showMenu = true;
-    // this.addBeverage = false;
   }
 
   getBeverage(value: string) {
