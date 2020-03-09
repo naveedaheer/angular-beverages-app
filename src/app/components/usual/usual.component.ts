@@ -7,14 +7,11 @@ import { SaloonService } from './../../services/saloon.service';
   styleUrls: ['./usual.component.sass']
 })
 export class UsualComponent implements OnInit {
-  userBeverage;
-  showDefaultSelection = false;
   @Output() defaultSelection = new EventEmitter();
 
   constructor(private service: SaloonService) { }
 
   ngOnInit(): void {
-    this.userBeverage = this.service.getUserBeverage();
   }
 
   theUsual(usual: boolean) {
