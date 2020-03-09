@@ -2,13 +2,16 @@
     <!-- Input field to add new drink -->
     <div>
         <input [(ngModel)]="beverage" type="text" id="beverage" name="beverage" placeholder="Beverage name..">
-        <button class="btn-style" (click)="add()">Add</button>
+        <button *ngIf="!isRename" class="btn-style" (click)="add()" [disabled]="!beverage" >Add</button>
+        <button *ngIf="isRename" class="btn-style" (click)="rename()" [disabled]="!beverage">Rename</button>
     </div>
 
     <!-- Display all the drinks -->
     <div *ngIf="drinkList?.length">
         <ol>
-            <li *ngFor="let drink of drinkList">{{drink}}</li>
+            <li *ngFor="let drink of drinkList; let i = index">{{drink}}<span class="pointer"
+                    (click)="beverage = drink; currentIndex = i; isRename = true;"
+                    style="margin-left: 20px;">Rename</span></li>
         </ol>
     </div>
 </div>

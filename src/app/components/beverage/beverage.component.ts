@@ -10,6 +10,8 @@ export class BeverageComponent implements OnInit {
   beverage: string; // beverage name user eners in input field to store
   drinkList; // display all the beverages stored
   @Output() updateBeverageList = new EventEmitter(); // this sends the updated list of beverages
+  isRename = false; // checks the value is for add or rename
+  currentIndex; // used to rename the drink
 
   constructor(private service: SaloonService) { }
 
@@ -27,7 +29,15 @@ export class BeverageComponent implements OnInit {
     this.drinkList.push(this.beverage);
     this.service.saveBeverages(this.drinkList);
     this.updateBeverageList.emit(this.drinkList);
+  }
 
+  /**
+ *  Rename a new drink in the list of all beverages in localStorge   
+ */
+  rename(): void {
+    this.drinkList[this.currentIndex] = this.beverage;
+    this.service.saveBeverages(this.drinkList);
+    this.updateBeverageList.emit(this.drinkList);
   }
 
 }
