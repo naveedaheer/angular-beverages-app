@@ -7,7 +7,6 @@ import { SaloonService } from './../../services/saloon.service';
   styleUrls: ['./dialogue.component.sass']
 })
 export class DialogueComponent implements OnInit, OnChanges {
-  showModal = false; // It is used to display modal again after clearing all data when a user clicks 'I was never here'
   title = "Howdy, stranger. Haven't seen your face around here before. What's your name?";
   user = {
     firstName: '',
@@ -17,18 +16,19 @@ export class DialogueComponent implements OnInit, OnChanges {
   nameSubmitted = false; // checks if user already entered first and last name
   addBeverage = false; // used to display/hide the beverage menu. It hide the menu when a new drink is being added
   beverageList; // list of all drinks saved in localStorage
-  @Input() openModal;
+  @Input() forgetCliked;
   newUser = true; // checks the user is new or returning
   showMenu = false; // used to show/hide the beverage menu
 
-  constructor(private service: SaloonService) { }
+  constructor(private service: SaloonService) {
+   
+  }
 
   /**
    * get the beverage list and user data from the service methods and displays a message accordingly
    */
   ngOnInit(): void {
     this.beverageList = this.service.getBeverages();
-    this.showModal = true;
     const user = this.service.getUser();
     if (user) {
       this.user = user;
@@ -42,17 +42,16 @@ export class DialogueComponent implements OnInit, OnChanges {
    * Reset if user clicks 'I was never here'
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes && changes.openModal && changes.openModal.currentValue) {
+    if (changes && changes.forgetCliked && changes.forgetCliked.currentValue) {
       this.nameSubmitted = false;
       this.selectedBeverage = '';
-      this.showModal = true;
       this.title = `Got it. Who are you again?`
       this.newUser = true;
       this.user = {
         firstName: '',
         lastName: ''
       }
-      this.beverageList = [];
+      this.beverageList = this.service.getBeverages();
     }
   }
 
@@ -92,8 +91,11 @@ export class DialogueComponent implements OnInit, OnChanges {
  */
   drinkSelection(usual: boolean) {
     if (usual) {
+      this.showMenu = false;
+      this.selectedBeverage = '';
       this.title = `One ${this.service.getUserBeverage()}, coming right up!`;
     } else {
+      this.selectedBeverage = '';
       this.showMenu = true;
       this.addBeverage = false;
     }

@@ -4,7 +4,16 @@ import { Injectable } from '@angular/core';
   providedIn: 'root'
 })
 export class SaloonService {
-  constructor() { }
+  constructor() { 
+    this.saveinitialBeverageList();
+  }
+
+  saveinitialBeverageList() {
+    const initialBeveragesList = ["Coffee", "Milk", "Water", "Tea"];
+    if (!(this.getBeverages()).length) {
+      this.saveBeverages(initialBeveragesList);
+    }
+  }
 
   /**
    * @param data contains first name and last name

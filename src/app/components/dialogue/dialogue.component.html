@@ -1,50 +1,42 @@
 <div class="container">
-    <h2 *ngIf="selectedBeverage">{{user.lastName}}'s most recent selected drink is {{selectedBeverage}}</h2>
 
-    <!-- Modal Box Started -->
-    <div class="modal" [ngClass]="showModal ? 'show-modal' : '' ">
-        <div class="modal-content">
-            <span class="close-button" (click)="showModal = false;">×</span>
+    <h2>{{title}}</h2>
+    <div class="apply-padding">
+        <!-- Dynamic Title to display related messages -->
 
-            <!-- Dynamic Title to display related messages -->
-            <h2>{{title}}</h2>
+        <!-- child component -->
+        <ng-container *ngIf="!newUser">
+            <app-usual (defaultSelection)="drinkSelection($event)"></app-usual>
+        </ng-container>
 
-            <!-- child component -->
-            <ng-container *ngIf="!newUser">
-                <app-usual (defaultSelection)="drinkSelection($event)"></app-usual>
+        <div *ngIf="!selectedBeverage">
+            <!-- Display this for new users only to get first and last name -->
+            <ng-container *ngIf="!nameSubmitted && newUser">
+                <div>
+                    <input [(ngModel)]="user.firstName" type="text" id="fname" name="firstname"
+                        placeholder="First name..">
+                    <input [(ngModel)]="user.lastName" type="text" id="lname" name="lastname" placeholder="Last name..">
+                    <button class="btn-style" (click)="saveUser()"
+                        [disabled]="!user.firstName || !user.lastName">Continue</button>
+                </div>
             </ng-container>
 
-            <div *ngIf="!selectedBeverage">
-                <!-- Display this for new users only to get first and last name -->
-                <ng-container *ngIf="(!nameSubmitted && newUser) else beverageSelection">
-                    <div>
-                        <input [(ngModel)]="user.firstName" type="text" id="fname" name="firstname"
-                            placeholder="First name..">
-                        <input [(ngModel)]="user.lastName" type="text" id="lname" name="lastname"
-                            placeholder="Last name..">
-                        <button class="btn-style" (click)="saveUser()"
-                            [disabled]="!user.firstName || !user.lastName">Continue</button>
-                    </div>
-                </ng-container>
+            <!-- Display the beverage menu in select -->
+            <ng-container>
+                <div *ngIf="!addBeverage && showMenu">
+                    <label for="beverage">select a beverage</label> or <span
+                        (click)="addBeverage = true; showMenu = false;" class="pointer add-beverage-label">Add new beverage</span>
+                    <select id="beverage" name="beverage" [(ngModel)]="selectedBeverage"
+                        (change)="getBeverage($event.target.value)">
+                        <option *ngFor="let drink of beverageList" [value]="drink">{{drink}}</option>
+                    </select>
+                </div>
 
-                <!-- Display the beverage menu in select -->
-                <ng-template #beverageSelection>
-                    <div *ngIf="(!addBeverage) && showMenu">
-                        <label for="beverage">selects a beverage</label> or <span
-                            (click)="addBeverage = true; showMenu = false;" class="pointer">Add new beverage</span>
-                        <select id="beverage" name="beverage" [(ngModel)]="selectedBeverage"
-                            (change)="getBeverage($event.target.value)">
-                            <option *ngFor="let drink of beverageList" [value]="drink">{{drink}}</option>
-                        </select>
-                    </div>
-
-                    <!-- child component -->
-                    <app-beverage *ngIf="addBeverage && !showMenu"
-                        (updateBeverageList)="getUpdatedBeverageList($event)"></app-beverage>
-                </ng-template>
-            </div>
+                <!-- child component -->
+                <app-beverage *ngIf="addBeverage && !showMenu" (updateBeverageList)="getUpdatedBeverageList($event)">
+                </app-beverage>
+            </ng-container>
         </div>
     </div>
-    <!-- Modal Box Ended -->
 
 </div>

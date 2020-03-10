@@ -19,6 +19,7 @@ export class ForgetComponent implements OnInit {
    */
   clearAllData(): void {
     this.service.clearAllData();
+    this.service.saveinitialBeverageList();
     this.clearData.emit(true);
   }
 

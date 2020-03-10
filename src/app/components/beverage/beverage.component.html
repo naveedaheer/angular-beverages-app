@@ -3,6 +3,7 @@
     <div>
         <input [(ngModel)]="beverage" type="text" id="beverage" name="beverage" placeholder="Beverage name..">
         <button *ngIf="!isRename" class="btn-style" (click)="add()" [disabled]="!beverage" >Add</button>
+        <button class="btn-style" (click)="updateBeverageList.emit(drinkList)">Back</button>
         <button *ngIf="isRename" class="btn-style" (click)="rename()" [disabled]="!beverage">Rename</button>
     </div>
 
