@@ -23,7 +23,7 @@
 
             <!-- Display the beverage menu in select -->
             <ng-container>
-                <div *ngIf="!addBeverage && showMenu">
+                <div *ngIf="!addBeverage && showMenu && nameSubmitted">
                     <label for="beverage">select a beverage</label> or <span
                         (click)="addBeverage = true; showMenu = false;" class="pointer add-beverage-label">Add new beverage</span>
                     <select id="beverage" name="beverage" [(ngModel)]="selectedBeverage"
@@ -33,7 +33,7 @@
                 </div>
 
                 <!-- child component -->
-                <app-beverage *ngIf="addBeverage && !showMenu" (updateBeverageList)="getUpdatedBeverageList($event)">
+                <app-beverage *ngIf="(addBeverage && !showMenu && nameSubmitted)" (updateBeverageList)="getUpdatedBeverageList($event)">
                 </app-beverage>
             </ng-container>
         </div>

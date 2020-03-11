@@ -21,7 +21,7 @@ export class DialogueComponent implements OnInit, OnChanges {
   showMenu = false; // used to show/hide the beverage menu
 
   constructor(private service: SaloonService) {
-   
+
   }
 
   /**
@@ -35,6 +35,7 @@ export class DialogueComponent implements OnInit, OnChanges {
       this.title = `Hello again, Mr. ${user.lastName}! The usual?`
       this.newUser = false;
     }
+
   }
 
 
@@ -42,7 +43,9 @@ export class DialogueComponent implements OnInit, OnChanges {
    * Reset if user clicks 'I was never here'
    */
   ngOnChanges(changes: SimpleChanges): void {
-    if (changes && changes.forgetCliked && changes.forgetCliked.currentValue) {
+    console.log("changes", changes);
+
+    if (changes && changes.forgetCliked) {
       this.nameSubmitted = false;
       this.selectedBeverage = '';
       this.title = `Got it. Who are you again?`
@@ -51,7 +54,8 @@ export class DialogueComponent implements OnInit, OnChanges {
         firstName: '',
         lastName: ''
       }
-      this.beverageList = this.service.getBeverages();
+      // this.beverageList = this.service.getBeverages();
+      this.getUpdatedBeverageList(this.service.getBeverages());
     }
   }
 
@@ -87,7 +91,7 @@ export class DialogueComponent implements OnInit, OnChanges {
 
   /**
  * @param usual contains true or false. It true then show message One <chosen beverage>, coming right up! if false then show a beverage menu
- * this is output of child component 'usual', it runs when user clicks on any of two buttons 1) the usual 2) another beverage 
+ * this is output of child component 'usual', it runs when user clicks on any of two buttons 1) the usual 2) another beverage
  */
   drinkSelection(usual: boolean) {
     if (usual) {

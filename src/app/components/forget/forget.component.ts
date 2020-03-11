@@ -18,9 +18,10 @@ export class ForgetComponent implements OnInit {
    * It removes all the data from localStoarge using service method and sends an event to parent component 'dialogue'
    */
   clearAllData(): void {
+    console.log("cicked")
     this.service.clearAllData();
     this.service.saveinitialBeverageList();
-    this.clearData.emit(true);
+    this.clearData.emit();
   }
 
 }
