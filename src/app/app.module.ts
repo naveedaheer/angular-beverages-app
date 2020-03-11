@@ -1,24 +1,26 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { CommonModule } from '@angular/common';
 
 import { AppComponent } from './app.component';
-import { DialogueComponent } from './components/dialogue/dialogue.component';
-import { ForgetComponent } from './components/forget/forget.component';
-import { BeverageComponent } from './components/beverage/beverage.component';
 import { UsualComponent } from './components/usual/usual.component';
+import { ForgetComponent } from './components/forget/forget.component';
+import { DialogueComponent } from './components/dialogue/dialogue.component';
+import { BeverageComponent } from './components/beverage/beverage.component';
 import { FormsModule } from '@angular/forms';
 
 @NgModule({
   declarations: [
     AppComponent,
-    DialogueComponent,
+    UsualComponent,
     ForgetComponent,
-    BeverageComponent,
-    UsualComponent
+    DialogueComponent,
+    BeverageComponent
   ],
   imports: [
     BrowserModule,
-    FormsModule
+    FormsModule,
+    CommonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

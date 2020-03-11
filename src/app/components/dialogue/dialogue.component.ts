@@ -4,7 +4,7 @@ import { SaloonService } from './../../services/saloon.service';
 @Component({
   selector: 'app-dialogue',
   templateUrl: './dialogue.component.html',
-  styleUrls: ['./dialogue.component.sass']
+  styleUrls: ['./dialogue.component.css']
 })
 export class DialogueComponent implements OnInit, OnChanges {
   title = "Howdy, stranger. Haven't seen your face around here before. What's your name?";
@@ -19,7 +19,6 @@ export class DialogueComponent implements OnInit, OnChanges {
   @Input() forgetCliked;
   newUser = true; // checks the user is new or returning
   showMenu = false; // used to show/hide the beverage menu
-
   constructor(private service: SaloonService) {
 
   }
@@ -35,7 +34,6 @@ export class DialogueComponent implements OnInit, OnChanges {
       this.title = `Hello again, Mr. ${user.lastName}! The usual?`
       this.newUser = false;
     }
-
   }
 
 
@@ -43,17 +41,16 @@ export class DialogueComponent implements OnInit, OnChanges {
    * Reset if user clicks 'I was never here'
    */
   ngOnChanges(changes: SimpleChanges): void {
-
-    if (changes && changes.forgetCliked) {
+    if (changes && changes.forgetCliked && !changes.forgetCliked.firstChange) {
       this.nameSubmitted = false;
       this.selectedBeverage = '';
-      this.title = `Got it. Who are you again?`
       this.newUser = true;
       this.user = {
         firstName: '',
         lastName: ''
       }
       this.getUpdatedBeverageList(this.service.getBeverages());
+      this.title = `Got it. Who are you again?`
     }
   }
 

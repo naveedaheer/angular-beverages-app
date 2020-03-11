@@ -4,7 +4,7 @@ import { SaloonService } from './../../services/saloon.service';
 @Component({
   selector: 'app-beverage',
   templateUrl: './beverage.component.html',
-  styleUrls: ['./beverage.component.sass']
+  styleUrls: ['./beverage.component.css']
 })
 export class BeverageComponent implements OnInit {
   beverage: string; // beverage name user eners in input field to store
@@ -23,7 +23,7 @@ export class BeverageComponent implements OnInit {
   }
 
   /**
-   *  Add a new drink in the list of all beverages in localStorge   
+   *  Add a new drink in the list of all beverages in localStorge
    */
   add(): void {
     this.drinkList.push(this.beverage);
@@ -32,7 +32,7 @@ export class BeverageComponent implements OnInit {
   }
 
   /**
- *  Rename a new drink in the list of all beverages in localStorge   
+ *  Rename a new drink in the list of all beverages in localStorge
  */
   rename(): void {
     this.drinkList[this.currentIndex] = this.beverage;

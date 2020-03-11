@@ -3,7 +3,7 @@ import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 @Component({
   selector: 'app-usual',
   templateUrl: './usual.component.html',
-  styleUrls: ['./usual.component.sass']
+  styleUrls: ['./usual.component.css']
 })
 export class UsualComponent implements OnInit {
   @Output() defaultSelection = new EventEmitter();

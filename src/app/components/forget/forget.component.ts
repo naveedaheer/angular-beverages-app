@@ -4,7 +4,7 @@ import { SaloonService } from './../../services/saloon.service';
 @Component({
   selector: 'app-forget',
   templateUrl: './forget.component.html',
-  styleUrls: ['./forget.component.sass']
+  styleUrls: ['./forget.component.css']
 })
 export class ForgetComponent implements OnInit {
   @Output() clearData = new EventEmitter();
