@@ -1,5 +1,4 @@
 import { Component, OnInit, Output, EventEmitter } from '@angular/core';
-import { SaloonService } from './../../services/saloon.service';
 
 @Component({
   selector: 'app-usual',
@@ -9,7 +8,7 @@ import { SaloonService } from './../../services/saloon.service';
 export class UsualComponent implements OnInit {
   @Output() defaultSelection = new EventEmitter();
 
-  constructor(private service: SaloonService) { }
+  constructor() { }
 
   ngOnInit(): void {
   }

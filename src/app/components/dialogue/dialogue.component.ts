@@ -43,7 +43,6 @@ export class DialogueComponent implements OnInit, OnChanges {
    * Reset if user clicks 'I was never here'
    */
   ngOnChanges(changes: SimpleChanges): void {
-    console.log("changes", changes);
 
     if (changes && changes.forgetCliked) {
       this.nameSubmitted = false;
@@ -54,7 +53,6 @@ export class DialogueComponent implements OnInit, OnChanges {
         firstName: '',
         lastName: ''
       }
-      // this.beverageList = this.service.getBeverages();
       this.getUpdatedBeverageList(this.service.getBeverages());
     }
   }
@@ -102,6 +100,7 @@ export class DialogueComponent implements OnInit, OnChanges {
       this.selectedBeverage = '';
       this.showMenu = true;
       this.addBeverage = false;
+      this.nameSubmitted = true;
     }
   }
 
